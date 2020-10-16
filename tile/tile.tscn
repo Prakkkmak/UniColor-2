@@ -39,7 +39,7 @@ tracks/1/keys = {
 
 [node name="Tile" type="Area2D"]
 script = ExtResource( 1 )
-states = [ Color( 0.976471, 0, 0, 1 ), Color( 0.313726, 1, 0, 1 ), Color( 0.00784314, 0, 1, 1 ), Color( 0.0980392, 0.0705882, 0.054902, 1 ) ]
+states = [ Color( 0.976471, 0, 0, 1 ), Color( 0.313726, 1, 0, 1 ), Color( 0.00784314, 0, 1, 1 ), Color( 0.996078, 0.0117647, 0.866667, 1 ) ]
 max_states = 4
 
 [node name="Sprite" type="Sprite" parent="."]

@@ -4,15 +4,21 @@ export(PackedScene) var tile_scene : PackedScene = preload("res://tile/tile.tscn
 export(int) var grid_size : int = 5 #Size of the grid
 export(int) var randomize_strength = 100 #Number of tiles the grid is shuffled
 export(int) var difficulty = 2
-export(bool) var is_preview = false
 
-var tile_size = 1
+var tile_size = 512
 
 const grid = []
 
 func _ready():
 	tile_size = tile_scene.instance().get_node("Sprite").texture.get_size().x
 	generate_grid(grid_size, grid_size)
+
+func _on_tile_clicked(x: int, y: int):
+	for i in range(grid_size):
+		for j in range(grid_size):
+			if(i == x || j == y):
+				grid[i][j].next_state()
+				check_victory()
 
 func generate_grid(size_x : int, size_y : int):
 	for x in range(size_x):
@@ -45,9 +51,12 @@ func generate_tile(x : int, y : int) -> Tile:
 	tile.max_states = difficulty
 	return tile
 
-func _on_tile_clicked(x: int, y: int):
+
+
+func check_victory():
+	var last_state = grid[0][0].state
 	for i in range(grid_size):
 		for j in range(grid_size):
-			if(i == x || j == y):
-				grid[i][j].next_state()
-
+			if(grid[i][j].state != last_state):
+				return
+	print("VICTORY")

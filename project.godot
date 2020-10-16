@@ -13,15 +13,9 @@ _global_script_classes=[ {
 "class": "Tile",
 "language": "GDScript",
 "path": "res://tile/tile.gd"
-}, {
-"base": "Resource",
-"class": "TileTheme",
-"language": "GDScript",
-"path": "res://theme/theme.gd"
 } ]
 _global_script_class_icons={
-"Tile": "",
-"TileTheme": ""
+"Tile": ""
 }
 
 [application]

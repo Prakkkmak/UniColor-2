@@ -6,6 +6,7 @@ signal tile_clicked(x,y)
 
 export(Array, Color) var states : Array = []
 export(int) var max_states : int = 2
+export(String) var anim : String = "swap"
 
 var state = 0
 
@@ -23,7 +24,7 @@ func _ready():
 func next_state():
 	next_state_index()
 	$AnimationPlayer.stop()
-	$AnimationPlayer.play("swap")
+	$AnimationPlayer.play(anim)
 
 func set_state_properties():
 	$Sprite.modulate = states[state]
