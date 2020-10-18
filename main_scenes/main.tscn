@@ -1,0 +1,158 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://main_scenes/menu/menu.gd" type="Script" id=1]
+[ext_resource path="res://level/level_button.tscn" type="PackedScene" id=2]
+[ext_resource path="res://tile/tile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main_scenes/game_preview.tscn" type="PackedScene" id=4]
+
+[node name="Main Menu" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Game" parent="." instance=ExtResource( 4 )]
+tile_scene = ExtResource( 3 )
+tick_rate = 0.25
+
+[node name="Menu" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu"]
+margin_top = -1.0
+margin_right = 1023.0
+margin_bottom = 597.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/MarginContainer"]
+margin_right = 1023.0
+margin_bottom = 598.0
+
+[node name="Menu" type="VBoxContainer" parent="Menu/MarginContainer/HBoxContainer"]
+margin_right = 200.0
+margin_bottom = 598.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Levels" type="Button" parent="Menu/MarginContainer/HBoxContainer/Menu"]
+margin_right = 200.0
+margin_bottom = 196.0
+size_flags_vertical = 3
+text = "Niveaux"
+
+[node name="Themes" type="Button" parent="Menu/MarginContainer/HBoxContainer/Menu"]
+margin_top = 200.0
+margin_right = 200.0
+margin_bottom = 397.0
+size_flags_vertical = 3
+text = "Thèmes"
+
+[node name="Exit" type="Button" parent="Menu/MarginContainer/HBoxContainer/Menu"]
+margin_top = 401.0
+margin_right = 200.0
+margin_bottom = 598.0
+size_flags_vertical = 3
+text = "Quitter"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Levels" type="VBoxContainer" parent="Menu/MarginContainer/HBoxContainer"]
+visible = false
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 598.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level" parent="Menu/MarginContainer/HBoxContainer/Levels" instance=ExtResource( 2 )]
+margin_bottom = 59.0
+text = "Niveau 1"
+grid_size = 3
+
+[node name="Level2" parent="Menu/MarginContainer/HBoxContainer/Levels" instance=ExtResource( 2 )]
+margin_top = 63.0
+margin_bottom = 123.0
+text = "Niveau 2"
+
+[node name="Level3" parent="Menu/MarginContainer/HBoxContainer/Levels" instance=ExtResource( 2 )]
+margin_top = 127.0
+margin_bottom = 186.0
+text = "Niveau 3"
+level_type = 1
+
+[node name="Level4" parent="Menu/MarginContainer/HBoxContainer/Levels" instance=ExtResource( 2 )]
+margin_top = 190.0
+margin_bottom = 250.0
+text = "Niveau 4"
+grid_size = 4
+difficulty = 3
+
+[node name="Level5" parent="Menu/MarginContainer/HBoxContainer/Levels" instance=ExtResource( 2 )]
+margin_top = 254.0
+margin_bottom = 313.0
+text = "Niveau 5"
+grid_size = 10
+level_type = 1
+
+[node name="Level6" parent="Menu/MarginContainer/HBoxContainer/Levels" instance=ExtResource( 2 )]
+margin_top = 317.0
+margin_bottom = 377.0
+text = "Niveau 6"
+grid_size = 6
+level_type = 3
+
+[node name="Level7" parent="Menu/MarginContainer/HBoxContainer/Levels" instance=ExtResource( 2 )]
+margin_top = 381.0
+margin_bottom = 441.0
+text = "Niveau 6"
+grid_size = 6
+level_type = 2
+
+[node name="Level8" parent="Menu/MarginContainer/HBoxContainer/Levels" instance=ExtResource( 2 )]
+margin_top = 445.0
+margin_bottom = 504.0
+text = "Niveau 7"
+grid_size = 8
+difficulty = 4
+level_type = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/MarginContainer/HBoxContainer/Levels"]
+margin_top = 508.0
+margin_right = 200.0
+margin_bottom = 598.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="Play" type="Button" parent="Menu/MarginContainer/HBoxContainer/Levels/HBoxContainer"]
+margin_right = 98.0
+margin_bottom = 90.0
+size_flags_horizontal = 3
+text = "Jouer"
+
+[node name="Return" type="Button" parent="Menu/MarginContainer/HBoxContainer/Levels/HBoxContainer"]
+margin_left = 102.0
+margin_right = 200.0
+margin_bottom = 90.0
+size_flags_horizontal = 3
+text = "Retour"
+
+[node name="CenterContainer" type="CenterContainer" parent="Menu/MarginContainer/HBoxContainer"]
+margin_left = 204.0
+margin_right = 204.0
+margin_bottom = 598.0
+[connection signal="level_selected" from="Menu/MarginContainer/HBoxContainer/Levels/Level" to="Game" method="_on_set_level"]
+[connection signal="level_selected" from="Menu/MarginContainer/HBoxContainer/Levels/Level2" to="Game" method="_on_set_level"]
+[connection signal="level_selected" from="Menu/MarginContainer/HBoxContainer/Levels/Level3" to="Game" method="_on_set_level"]
+[connection signal="level_selected" from="Menu/MarginContainer/HBoxContainer/Levels/Level4" to="Game" method="_on_set_level"]
+[connection signal="level_selected" from="Menu/MarginContainer/HBoxContainer/Levels/Level5" to="Game" method="_on_set_level"]
+[connection signal="level_selected" from="Menu/MarginContainer/HBoxContainer/Levels/Level6" to="Game" method="_on_set_level"]
+[connection signal="level_selected" from="Menu/MarginContainer/HBoxContainer/Levels/Level7" to="Game" method="_on_set_level"]
+[connection signal="level_selected" from="Menu/MarginContainer/HBoxContainer/Levels/Level8" to="Game" method="_on_set_level"]
+[connection signal="pressed" from="Menu/MarginContainer/HBoxContainer/Levels/HBoxContainer/Play" to="." method="_on_play"]

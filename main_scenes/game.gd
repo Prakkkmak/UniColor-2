@@ -1,26 +1,44 @@
 extends Node2D
 
+enum LEVEL_TYPE {DEFAULT, SQUARE, SQUARE2, DIAG}
+
 export(PackedScene) var tile_scene : PackedScene = preload("res://tile/tile.tscn")
 export(int) var grid_size : int = 5 #Size of the grid
 export(int) var randomize_strength = 100 #Number of tiles the grid is shuffled
 export(int) var difficulty = 2
+export(LEVEL_TYPE) var level_type = LEVEL_TYPE.DEFAULT
 
 var tile_size = 512
 
-const grid = []
+var grid = []
 
 func _ready():
+	_on_load_game()
+
+func _on_load_game():
 	tile_size = tile_scene.instance().get_node("Sprite").texture.get_size().x
 	generate_grid(grid_size, grid_size)
 
 func _on_tile_clicked(x: int, y: int):
+	print(str(x) + ":" + str(y))
 	for i in range(grid_size):
 		for j in range(grid_size):
-			if(i == x || j == y):
+			if(tile_check(x,y,i,j)):
 				grid[i][j].next_state()
 				check_victory()
 
+func _on_set_level(new_grid_size, new_difficulty, new_level_type):
+	for i in range(grid_size):
+		for j in range(grid_size):
+			remove_child(grid[i][j])
+			grid[i][j].queue_free()
+	grid_size = new_grid_size
+	difficulty = new_difficulty
+	level_type = new_level_type
+	_on_load_game()
+
 func generate_grid(size_x : int, size_y : int):
+	grid = []
 	for x in range(size_x):
 		grid.append([])
 		grid[x]=[]
@@ -51,6 +69,17 @@ func generate_tile(x : int, y : int) -> Tile:
 	tile.max_states = difficulty
 	return tile
 
+func tile_check(x : int, y : int, i : int, j : int):
+	if(level_type == LEVEL_TYPE.DEFAULT):
+		return i == x || j == y
+	elif(level_type == LEVEL_TYPE.SQUARE):
+		#return i >= x - 1 && i <= x + 1 && j >= y - 1 && j <= y + 1 
+		return abs(i-x) <= 1 && abs(j-y) <=1
+	elif(level_type == LEVEL_TYPE.DIAG):
+		return abs(i - x) == abs(j - y)
+	elif(level_type == LEVEL_TYPE.SQUARE2):
+		return abs(i - x) <= 1 && abs( j - y ) <= 1 && !(x == i && y == j)
+	return false
 
 
 func check_victory():
