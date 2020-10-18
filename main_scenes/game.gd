@@ -8,7 +8,8 @@ export(int) var randomize_strength = 100 #Number of tiles the grid is shuffled
 export(int) var difficulty = 2
 export(LEVEL_TYPE) var level_type = LEVEL_TYPE.DEFAULT
 
-var tile_size = 512
+var game_started : bool = false
+var tile_size : int = 512
 
 var grid = []
 
@@ -24,8 +25,12 @@ func _on_tile_clicked(x: int, y: int):
 	for i in range(grid_size):
 		for j in range(grid_size):
 			if(tile_check(x,y,i,j)):
-				grid[i][j].next_state()
-				check_victory()
+				if(game_started):
+					grid[i][j].next_state()
+					check_victory()
+				else:
+					grid[i][j].next_state_index()
+					grid[i][j].set_state_properties()
 
 func _on_set_level(new_grid_size, new_difficulty, new_level_type):
 	for i in range(grid_size):
@@ -38,6 +43,7 @@ func _on_set_level(new_grid_size, new_difficulty, new_level_type):
 	_on_load_game()
 
 func generate_grid(size_x : int, size_y : int):
+	game_started = false
 	grid = []
 	for x in range(size_x):
 		grid.append([])
@@ -47,6 +53,7 @@ func generate_grid(size_x : int, size_y : int):
 			grid[x][y] = generate_tile(x,y)
 	randomize_grid()
 	fix_camera()
+	game_started = true
 
 func randomize_grid():
 	for i in range(randomize_strength):

@@ -19,7 +19,8 @@ func _ready():
 	if(max_states > len(states)):
 		push_error("Not enough states for this max_states")
 	sprite = $Sprite
-	next_state()
+	set_state_properties()
+	
 
 func next_state():
 	next_state_index()

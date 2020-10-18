@@ -3,8 +3,8 @@ extends "res://main_scenes/game.gd"
 export(float) var tick_rate : float = 0.5
 export(float) var chance_to_play : float = 0.33
 
-var t = 0
-var last_sec = 0 
+var t : float = -2.0
+var last_sec : float = 0.0
 
 func _process(delta):
 	t += delta
