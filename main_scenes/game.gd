@@ -95,4 +95,7 @@ func check_victory():
 		for j in range(grid_size):
 			if(grid[i][j].state != last_state):
 				return
-	print("VICTORY")
+	victory()
+
+func victory():
+	get_tree().reload_current_scene()

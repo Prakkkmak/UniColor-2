@@ -8,4 +8,5 @@ func _on_play():
 	game.grid_size = game_preview.grid_size
 	game.difficulty = game_preview.difficulty
 	game.level_type = game_preview.level_type
+	game.tile_scene = game_preview.tile_scene
 	add_child(game)
