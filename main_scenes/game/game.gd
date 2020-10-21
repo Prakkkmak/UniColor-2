@@ -2,13 +2,17 @@ extends Node2D
 
 enum LEVEL_TYPE {DEFAULT, SQUARE, SQUARE2, DIAG}
 
+const ESCAPE_BUTTON = "ui_escape"
+
 export(PackedScene) var tile_scene : PackedScene
 export(int) var grid_size : int = 5 #Size of the grid
 export(int) var randomize_strength = 100 #Number of tiles the grid is shuffled
 export(int) var difficulty = 2
 export(LEVEL_TYPE) var level_type = LEVEL_TYPE.DEFAULT
 
+
 var game_started : bool = false
+var game_won : bool = false
 var tile_size : int = 512
 
 var grid = []
@@ -22,6 +26,8 @@ func _on_load_game():
 
 func _on_tile_clicked(x: int, y: int):
 	print(str(x) + ":" + str(y))
+	if game_won:
+		return
 	for i in range(grid_size):
 		for j in range(grid_size):
 			if(tile_check(x,y,i,j)):
@@ -32,15 +38,24 @@ func _on_tile_clicked(x: int, y: int):
 					grid[i][j].next_state_index()
 					grid[i][j].set_state_properties()
 
-func _on_set_level(new_grid_size, new_difficulty, new_level_type):
-	for i in range(grid_size):
-		for j in range(grid_size):
-			remove_child(grid[i][j])
-			grid[i][j].queue_free()
+func _on_set_level(new_grid_size: int, new_difficulty: int, new_level_type):
+	clear_grid()
 	grid_size = new_grid_size
 	difficulty = new_difficulty
 	level_type = new_level_type
 	_on_load_game()
+
+func _on_theme_selected(theme):
+	clear_grid()
+	tile_scene = theme
+	_on_load_game()
+	
+func clear_grid():
+	for i in range(grid_size):
+		for j in range(grid_size):
+			remove_child(grid[i][j])
+			grid[i][j].queue_free()
+
 
 func generate_grid(size_x : int, size_y : int):
 	game_started = false
@@ -98,4 +113,5 @@ func check_victory():
 	victory()
 
 func victory():
-	get_tree().reload_current_scene()
+	$WinCanvas/WinLabel.show()
+	game_won = true

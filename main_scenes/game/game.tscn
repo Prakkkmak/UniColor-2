@@ -9,3 +9,16 @@ level_type = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+
+[node name="WinCanvas" type="CanvasLayer" parent="."]
+
+[node name="WinLabel" type="Label" parent="WinCanvas"]
+visible = false
+margin_right = 326.0
+margin_bottom = 14.0
+text = "Vous avez gagné ! Appuyez sur ECHAP pour quitter."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

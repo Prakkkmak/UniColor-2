@@ -21,3 +21,6 @@ func preview():
 func fix_camera():
 	$Camera2D.offset = Vector2(grid_size * tile_size / 3 - (tile_size/2), grid_size * tile_size / 2 - (tile_size/2))
 	$Camera2D.zoom = Vector2(grid_size * 0.9, grid_size * 0.9)
+
+func check_victory():
+	pass
