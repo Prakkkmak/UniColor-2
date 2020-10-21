@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://tile/tile.gd" type="Script" id=1]
+[ext_resource path="res://main_scenes/tile/tile.gd" type="Script" id=1]
 [ext_resource path="res://white.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 231.785, 228.298 )
 
 [sub_resource type="Animation" id=2]
-resource_name = "swap"
+resource_name = "swaphh"
 length = 0.4
 step = 0.05
 tracks/0/type = "value"
@@ -43,7 +43,7 @@ states = [ Color( 0.976471, 0, 0, 1 ), Color( 0.313726, 1, 0, 1 ), Color( 0.0078
 max_states = 4
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.9, 0.9 )
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

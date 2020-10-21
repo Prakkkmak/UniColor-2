@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Tile",
 "language": "GDScript",
-"path": "res://tile/tile.gd"
+"path": "res://main_scenes/tile/tile.gd"
 } ]
 _global_script_class_icons={
 "Tile": ""

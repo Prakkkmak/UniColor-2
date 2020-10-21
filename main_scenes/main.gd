@@ -1,5 +1,5 @@
 extends Node2D
-const scene = preload("res://main_scenes/game.tscn")
+const scene = preload("res://main_scenes/game/game.tscn")
 
 func _on_play():
 	var game = scene.instance()

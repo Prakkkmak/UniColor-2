@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://tile/tile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main_scenes/tile/tile.tscn" type="PackedScene" id=1]
 
 [sub_resource type="Animation" id=1]
 resource_name = "swap_neon"
@@ -33,11 +33,13 @@ tracks/1/keys = {
 }
 
 [node name="Tile" instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 0.333333 )
 states = [ Color( 0.239216, 0.133333, 0.843137, 1 ), Color( 0.984314, 0.972549, 0.980392, 1 ), Color( 0.960784, 0.0509804, 0.862745, 1 ), Color( 0.996078, 0.0313726, 0.00784314, 1 ) ]
 anim = "swap_neon"
 
 [node name="Sprite" parent="." index="0"]
 modulate = Color( 0.988235, 0.988235, 0.996078, 0.439216 )
+scale = Vector2( 0.9, 0.9 )
 
 [node name="AnimationPlayer" parent="." index="3"]
 anims/swap_neon = SubResource( 1 )

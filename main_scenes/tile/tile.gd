@@ -28,7 +28,9 @@ func next_state():
 	$AnimationPlayer.play(anim)
 
 func set_state_properties():
-	$Sprite.modulate = states[state]
+	$Sprite.modulate.r = states[state].r
+	$Sprite.modulate.g = states[state].g
+	$Sprite.modulate.b = states[state].b
 
 func next_state_index():
 	state += 1

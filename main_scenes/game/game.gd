@@ -2,7 +2,7 @@ extends Node2D
 
 enum LEVEL_TYPE {DEFAULT, SQUARE, SQUARE2, DIAG}
 
-export(PackedScene) var tile_scene : PackedScene = preload("res://tile/tile.tscn")
+export(PackedScene) var tile_scene : PackedScene
 export(int) var grid_size : int = 5 #Size of the grid
 export(int) var randomize_strength = 100 #Number of tiles the grid is shuffled
 export(int) var difficulty = 2

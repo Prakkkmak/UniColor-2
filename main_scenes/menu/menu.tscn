@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://main_scenes/game_preview.tscn" type="PackedScene" id=1]
-[ext_resource path="res://level/level_button.tscn" type="PackedScene" id=2]
-[ext_resource path="res://tile/themes/neon/tile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main_scenes/game/game_preview/game_preview.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main_scenes/level_button/level_button.tscn" type="PackedScene" id=2]
+[ext_resource path="res://main_scenes/tile/themes/halloween/tile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://main_scenes/menu/menu.gd" type="Script" id=4]
 
 [node name="Menu" type="Node2D"]

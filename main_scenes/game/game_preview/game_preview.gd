@@ -1,4 +1,4 @@
-extends "res://main_scenes/game.gd"
+extends "res://main_scenes/game/game.gd"
 
 export(float) var tick_rate : float = 0.5
 export(float) var chance_to_play : float = 0.33
