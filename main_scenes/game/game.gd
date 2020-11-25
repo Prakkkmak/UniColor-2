@@ -1,6 +1,6 @@
 extends Node2D
 
-enum LEVEL_TYPE {DEFAULT, SQUARE, SQUARE2, DIAG}
+enum LEVEL_TYPE {DEFAULT, SQUARE, SQUARE2, SQUARE3, DIAG}
 
 const ESCAPE_BUTTON = "ui_escape"
 
@@ -95,12 +95,13 @@ func tile_check(x : int, y : int, i : int, j : int):
 	if(level_type == LEVEL_TYPE.DEFAULT):
 		return i == x || j == y
 	elif(level_type == LEVEL_TYPE.SQUARE):
-		#return i >= x - 1 && i <= x + 1 && j >= y - 1 && j <= y + 1 
 		return abs(i-x) <= 1 && abs(j-y) <=1
-	elif(level_type == LEVEL_TYPE.DIAG):
-		return abs(i - x) == abs(j - y)
 	elif(level_type == LEVEL_TYPE.SQUARE2):
 		return abs(i - x) <= 1 && abs( j - y ) <= 1 && !(x == i && y == j)
+	elif(level_type == LEVEL_TYPE.SQUARE3):
+		return abs(i - x) <= 1 && abs( j - y ) <= 1 && (x == i || y == j)
+	elif(level_type == LEVEL_TYPE.DIAG):
+		return abs(i - x) == abs(j - y)
 	return false
 
 

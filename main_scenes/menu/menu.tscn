@@ -13,6 +13,8 @@ script = ExtResource( 4 )
 
 [node name="GamePreview" parent="." instance=ExtResource( 1 )]
 tile_scene = ExtResource( 3 )
+grid_size = 5
+difficulty = 2
 tick_rate = 0.25
 
 [node name="Canvas" type="CanvasLayer" parent="."]
@@ -78,6 +80,7 @@ __meta__ = {
 margin_bottom = 59.0
 text = "Niveau 1"
 grid_size = 3
+level_type = 3
 
 [node name="Level2" parent="Canvas/MarginContainer/HBoxContainer/Levels" instance=ExtResource( 2 )]
 margin_top = 63.0
@@ -111,19 +114,27 @@ margin_top = 317.0
 margin_bottom = 377.0
 text = "Niveau 6"
 grid_size = 4
-level_type = 3
+level_type = 4
 
 [node name="Level7" parent="Canvas/MarginContainer/HBoxContainer/Levels" instance=ExtResource( 2 )]
+margin_top = 317.0
+margin_bottom = 377.0
+text = "Niveau 7"
+grid_size = 6
+difficulty = 3
+level_type = 3
+
+[node name="Level8" parent="Canvas/MarginContainer/HBoxContainer/Levels" instance=ExtResource( 2 )]
 margin_top = 381.0
 margin_bottom = 441.0
-text = "Niveau 6"
+text = "Niveau 8"
 grid_size = 6
 level_type = 2
 
-[node name="Level8" parent="Canvas/MarginContainer/HBoxContainer/Levels" instance=ExtResource( 2 )]
+[node name="Level9" parent="Canvas/MarginContainer/HBoxContainer/Levels" instance=ExtResource( 2 )]
 margin_top = 445.0
 margin_bottom = 504.0
-text = "Niveau 7"
+text = "Niveau 9"
 grid_size = 8
 difficulty = 4
 level_type = 1
@@ -194,6 +205,7 @@ text = "Retour"
 [connection signal="level_selected" from="Canvas/MarginContainer/HBoxContainer/Levels/Level6" to="GamePreview" method="_on_set_level"]
 [connection signal="level_selected" from="Canvas/MarginContainer/HBoxContainer/Levels/Level7" to="GamePreview" method="_on_set_level"]
 [connection signal="level_selected" from="Canvas/MarginContainer/HBoxContainer/Levels/Level8" to="GamePreview" method="_on_set_level"]
+[connection signal="level_selected" from="Canvas/MarginContainer/HBoxContainer/Levels/Level9" to="GamePreview" method="_on_set_level"]
 [connection signal="pressed" from="Canvas/MarginContainer/HBoxContainer/Levels/HBoxContainer/Play" to="." method="_on_play"]
 [connection signal="pressed" from="Canvas/MarginContainer/HBoxContainer/Levels/HBoxContainer/Return" to="." method="open_main_menu"]
 [connection signal="theme_selected" from="Canvas/MarginContainer/HBoxContainer/Themes/Theme" to="GamePreview" method="_on_theme_selected"]

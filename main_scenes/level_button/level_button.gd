@@ -2,7 +2,7 @@ extends Button
 
 signal level_selected(grid_size, difficulty, level_type)
 
-enum LEVEL_TYPE {DEFAULT, SQUARE, SQUARE2, DIAG}
+enum LEVEL_TYPE {DEFAULT, SQUARE, SQUARE2, SQUARE3, DIAG}
 
 export(int) var grid_size : int = 5 #Size of the grid
 export(int) var difficulty = 2
